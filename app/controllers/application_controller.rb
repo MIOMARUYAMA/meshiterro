@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+ #ログインしてないユーザーのアクセス制限 
+ before_action :authenticate_user!, except: [:top]
+ 
   # devise利用の機能（サインアップ、サインイン）が使われる前に
   # config_permitted_parametersメソッドが実行される。
   before_action :configure_permitted_parameters, if: :devise_controller?
